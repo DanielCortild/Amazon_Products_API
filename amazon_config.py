@@ -97,7 +97,12 @@ SEARCH_TERMS = [
   'i7',
   'i9',
   'Nvidea',
-  'GeForce'
+  'GeForce',
+
+  # SPEAKERS
+  'Speaker',
+  'Bose',
+  'JBL'
 ]
 
 BASE_URL = "https://www.amazon.nl/"

@@ -48,7 +48,7 @@ class AmazonAPI:
             r.append({
               "asin": asin,
               "title": title,
-              "price": price,
+              "price": float(price),
               "image": image
             })
         except:
