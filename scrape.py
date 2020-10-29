@@ -24,7 +24,7 @@ class AmazonAPI:
     setHeadless(options)
     self.driver = getChromeDriver(options)
 
-  def run(self, search_term):
+  def run(self, r, asins, search_term):
     results = []
     last_length = -1
     page = 1
@@ -34,7 +34,6 @@ class AmazonAPI:
       last_length = len(results)
       self.driver.get(f"{self.base_url}s?k={search_term}&page={page}")
       results = self.driver.find_elements_by_xpath("//div[contains(@class, 's-search-results')]/div")
-      r = []
       for res in results:
         try:
           asin = res.get_attribute('data-asin')
@@ -45,16 +44,19 @@ class AmazonAPI:
             image = img.get_attribute('src')
             title = name.text
             price = price_tag.text.replace(".", "").replace(",", ".")
-            r.append({
-              "asin": asin,
-              "title": title,
-              "price": float(price),
-              "image": image
-            })
+
+            if(asin not in asins):
+              asins.append(asin)
+              r.append({
+                "asin": asin,
+                "title": title,
+                "price": float(price),
+                "image": image
+              })
         except:
           pass
       page += 1
-      return r
+      return r, asins
         
     self.driver.quit()    
 
@@ -71,8 +73,9 @@ if __name__ == '__main__':
   amazon = AmazonAPI(BASE_URL)
 
   results = []
+  asins = []
   for i in progressbar.progressbar(range(len(SEARCH_TERMS))):
-    results += amazon.run(SEARCH_TERMS[i])
+    results, asins = amazon.run(results, asins, SEARCH_TERMS[i])
 
   generateJSON(results)
 
