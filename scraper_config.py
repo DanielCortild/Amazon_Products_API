@@ -84,9 +84,28 @@ SEARCH_TERMS = [
   'Lenovo',
   'Thinkpad',
   'Motorola',
+  'Carbon',
+  'Carbon X1',
+  'T490',
+  'T15',
+  'IdeaPad',
+  'Yoga',
+  'Lenovo Yoga',
+  'X1 Fold',
+  'Yoga Gen 5',
+  'Gen 5',
+  'C740',
+  'T490s',
+  'Slim 7',
 
+  # OPERATING SYSTEMS
+  'Linux',
   'Windows',
   'Android',
+  'MacOS',
+  'iOS',
+  'ipados',
+  'iwatchos',
 
   # PROCESSORS
   'Intel',
@@ -102,7 +121,12 @@ SEARCH_TERMS = [
   # SPEAKERS
   'Speaker',
   'Bose',
-  'JBL'
+  'JBL',
+  'Logitch',
+  'Sonos',
+  'BoomBox',
+  'Bluetooth',
+  'Luidspreker'
 ]
 
 BASE_URL = "https://www.amazon.nl/"
